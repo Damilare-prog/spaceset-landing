@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaceset — Furnish Your Home, One Piece at a Time</title>
+    <!-- Custom CSS replaces Tailwind CDN -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .phone-mockup {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0,0,0,0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1a1a1a 0%, #c9a96e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .img-zoom {
+            transition: transform 0.7s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.08);
+        }
+        .overlay-fade {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .group:hover .overlay-fade {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-body text-gray-800 bg-white antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-couch text-accent text-lg"></i>
+                    </div>
+                    <span class="font-heading font-bold text-xl text-primary tracking-tight">Spaceset</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#problem" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Why Us</a>
+                    <a href="#solution" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">How It Works</a>
+                    <a href="#showcase" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Gallery</a>
+                </div>
+                <button class="bg-primary text-white px-6 py-2.5 rounded-full font-heading font-semibold text-sm hover:bg-gray-800 transition-all transform hover:scale-105 shadow-lg">
+                    Download App
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-cream via-white to-gray-50 overflow-hidden pt-20">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-deep-green rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Text -->
+                <div class="fade-in-up space-y-8">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm">
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                        <span class="text-sm font-medium text-gray-600">Now serving all of Lagos</span>
+                    </div>
+                    
+                    <h1 class="font-heading font-black text-5xl md:text-7xl leading-tight text-primary">
+                        Furnish Your Home.<br>
+                        <span class="gradient-text">One Piece at a Time.</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-600 max-w-lg leading-relaxed">
+                        Skip full interior design. Buy only what you need — sofas, dining sets, beds & more.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary text-white px-8 py-4 rounded-full font-heading font-bold text-lg hover:bg-gray-800 transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-2 group">
+                            <i class="fas fa-download group-hover:animate-bounce"></i>
+                            Download App
+                        </button>
+                        <button class="bg-white text-primary border-2 border-primary px-8 py-4 rounded-full font-heading font-bold text-lg hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+                            Browse Furniture
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex flex-wrap items-center gap-6 pt-4">
+                        <div class="flex items-center gap-2 text-sm text-gray-600">
+                            <i class="fas fa-shield-alt text-accent"></i>
+                            <span class="font-medium">Trusted by Lagos homeowners</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-600">
+                            <i class="fas fa-shipping-fast text-accent"></i>
+                            <span class="font-medium">Fast delivery</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-600">
+                            <i class="fas fa-gem text-accent"></i>
+                            <span class="font-medium">Curated quality furniture</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Hero Image + Phone Mockup -->
+                <div class="fade-in-up relative flex justify-center lg:justify-end">
+                    <div class="relative float-animation">
+                        <!-- Hero Furniture Image -->
+                        <div class="relative w-80 md:w-96 rounded-3xl overflow-hidden shadow-2xl mb-6">
+                            <img src="https://kimi-web-img.moonshot.cn/img/www.spryinterior.com/67b6e90e1dbd9a24636efcf74c1b83a1326f757b.jpg" alt="Modern minimalist living room sofa set" class="w-full h-64 object-cover">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                                <p class="text-white font-heading font-bold text-sm">Modern Living Sets</p>
+                                <p class="text-white/80 text-xs">Starting from ₦95,000</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Frame -->
+                        <div class="phone-mockup w-72 md:w-80 bg-primary rounded-[3rem] p-3 relative z-10 mx-auto">
+                            <div class="bg-white rounded-[2.5rem] overflow-hidden h-[580px] relative">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-primary rounded-b-2xl z-20"></div>
+                                
+                                <div class="h-full overflow-y-auto scrollbar-hide">
+                                    <div class="bg-primary text-white p-6 pt-12">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <div>
+                                                <p class="text-xs text-gray-400">Good afternoon</p>
+                                                <h3 class="font-heading font-bold text-lg">Spaceset</h3>
+                                            </div>
+                                            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                                                <i class="fas fa-user text-primary text-sm"></i>
+                                            </div>
+                                        </div>
+                                        <div class="bg-gray-800 rounded-xl p-3 flex items-center gap-2">
+                                            <i class="fas fa-search text-gray-400 text-sm"></i>
+                                            <span class="text-sm text-gray-400">Search furniture...</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="p-4">
+                                        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                                            <div class="flex-shrink-0 bg-accent/10 rounded-xl p-3 text-center min-w-[80px]">
+                                                <i class="fas fa-couch text-accent text-xl mb-1"></i>
+                                                <p class="text-xs font-semibold text-primary">Sofas</p>
+                                            </div>
+                                            <div class="flex-shrink-0 bg-gray-100 rounded-xl p-3 text-center min-w-[80px]">
+                                                <i class="fas fa-bed text-gray-600 text-xl mb-1"></i>
+                                                <p class="text-xs font-semibold text-gray-600">Beds</p>
+                                            </div>
+                                            <div class="flex-shrink-0 bg-gray-100 rounded-xl p-3 text-center min-w-[80px]">
+                                                <i class="fas fa-utensils text-gray-600 text-xl mb-1"></i>
+                                                <p class="text-xs font-semibold text-gray-600">Dining</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="px-4 pb-4">
+                                        <h4 class="font-heading font-bold text-primary mb-3 text-sm">Popular Now</h4>
+                                        <div class="space-y-3">
+                                            <div class="bg-gray-50 rounded-2xl p-3 flex gap-3">
+                                                <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                                                    <img src="https://kimi-web-img.moonshot.cn/img/s3.amazonaws.com/806de209eccf23f33b3bc09010c8ce914041cd92.jpeg" alt="Grey modern sofa" class="w-full h-full object-cover">
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h5 class="font-semibold text-sm text-primary">Modern Sofa</h5>
+                                                    <p class="text-xs text-gray-500">3-seater, Grey</p>
+                                                    <p class="text-accent font-bold text-sm mt-1">₦145,000</p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-gray-50 rounded-2xl p-3 flex gap-3">
+                                                <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                                                    <img src="https://kimi-web-img.moonshot.cn/img/www.thespruce.com/eb7497d06cd98b5de3d6569ac2691347e1cdd31a.jpg" alt="Dining set" class="w-full h-full object-cover">
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h5 class="font-semibold text-sm text-primary">Dining Set</h5>
+                                                    <p class="text-xs text-gray-500">6 chairs, Oak</p>
+                                                    <p class="text-accent font-bold text-sm mt-1">₦280,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl z-20 animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Order placed</p>
+                                    <p class="font-bold text-sm text-primary">Delivered in 2 days</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-4 -left-6 bg-white rounded-2xl p-4 shadow-xl z-20" style="animation: float 4s ease-in-out infinite; animation-delay: 1s;">
+                            <div class="flex items-center gap-2">
+                                <div class="flex -space-x-2">
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full border-2 border-white"></div>
+                                    <div class="w-8 h-8 bg-gray-400 rounded-full border-2 border-white"></div>
+                                    <div class="w-8 h-8 bg-gray-500 rounded-full border-2 border-white"></div>
+                                </div>
+                                <p class="text-xs font-semibold text-primary">500+ happy homes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Problem Section -->
+    <section id="problem" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">The Struggle is Real</span>
+                <h2 class="font-heading font-black text-4xl md:text-5xl text-primary mt-4">Moving into a new apartment?</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="fade-in-up group text-center rounded-3xl overflow-hidden bg-cream hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.prod.website-files.com/23c1918b455fa8163aec389356d10fa747ca32a4.webp" alt="Empty apartment room with no furniture" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-white group-hover:bg-accent rounded-2xl flex items-center justify-center shadow-lg transition-colors -mt-16 relative z-10 border-4 border-cream group-hover:border-primary">
+                            <i class="fas fa-home text-2xl text-primary group-hover:text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl mb-3">Empty space, no direction</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300">You have the apartment but no idea how to make it feel like home.</p>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up group text-center rounded-3xl overflow-hidden bg-cream hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer" style="transition-delay: 0.1s;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/www.decorilla.com/e7c85d3e609928546595f5cd26ecc8ba48ae40fe.jpg" alt="Interior design consultation expensive" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-white group-hover:bg-accent rounded-2xl flex items-center justify-center shadow-lg transition-colors -mt-16 relative z-10 border-4 border-cream group-hover:border-primary">
+                            <i class="fas fa-money-bill-wave text-2xl text-primary group-hover:text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl mb-3">Interior designers too expensive</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300">Full design packages cost way more than your budget allows.</p>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up group text-center rounded-3xl overflow-hidden bg-cream hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer" style="transition-delay: 0.2s;">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.prod.website-files.com/195e6fa663efe2d562a064a7d8d3f9716f20a81d.webp" alt="Empty room with measuring tape planning" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-white group-hover:bg-accent rounded-2xl flex items-center justify-center shadow-lg transition-colors -mt-16 relative z-10 border-4 border-cream group-hover:border-primary">
+                            <i class="fas fa-question-circle text-2xl text-primary group-hover:text-white"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl mb-3">Don't know where to start</h3>
+                        <p class="text-gray-600 group-hover:text-gray-300">Too many options, too many markets, too much confusion.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center fade-in-up">
+                <p class="font-heading font-bold text-2xl md:text-3xl text-primary">We built Spaceset to fix this.</p>
+                <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Solution Section -->
+    <section id="solution" class="py-24 bg-gradient-to-b from-cream to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">The Solution</span>
+                <h2 class="font-heading font-black text-4xl md:text-5xl text-primary mt-4">Your Furniture, Your Way</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Choose exactly what you need — no pressure, no full package.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="fade-in-up bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/m.media-amazon.com/02155821a7e7158742324a6cb4ce02ed9e4ac0e9.jpg" alt="Modern living room sofa set category" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-cream rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                            <span class="text-3xl">🛋️</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-primary mb-3">Pick by Category</h3>
+                        <p class="text-gray-600 leading-relaxed">Sofas, beds, dining sets, lighting — browse exactly what you need without the noise.</p>
+                        <div class="mt-6 flex gap-2 flex-wrap">
+                            <span class="px-3 py-1 bg-cream rounded-full text-xs font-semibold text-primary">Sofas</span>
+                            <span class="px-3 py-1 bg-cream rounded-full text-xs font-semibold text-primary">Beds</span>
+                            <span class="px-3 py-1 bg-cream rounded-full text-xs font-semibold text-primary">Dining</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group" style="transition-delay: 0.1s;">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/s3.amazonaws.com/806de209eccf23f33b3bc09010c8ce914041cd92.jpeg" alt="Easy browsing clean app experience" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-cream rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                            <span class="text-3xl">📱</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-primary mb-3">Easy Browsing</h3>
+                        <p class="text-gray-600 leading-relaxed">Clean app, smooth experience. Find what you love in seconds, not hours.</p>
+                        <div class="mt-6 flex items-center gap-2 text-sm text-accent font-semibold">
+                            <i class="fas fa-star"></i>
+                            <span>4.9 App Store Rating</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group" style="transition-delay: 0.2s;">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://kimi-web-img.moonshot.cn/img/t3.ftcdn.net/330464d81a84c9e3f1530f14c0138417ec9ad502.jpg" alt="Furniture delivery truck service" class="w-full h-full object-cover img-zoom">
+                    </div>
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-cream rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                            <span class="text-3xl">🚚</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-primary mb-3">Fast Delivery</h3>
+                        <p class="text-gray-600 leading-relaxed">Get it delivered to your doorstep anywhere in Lagos. Quick, safe, reliable.</p>
+                        <div class="mt-6 flex items-center gap-2 text-sm text-green-600 font-semibold">
+                            <i class="fas fa-clock"></i>
+                            <span>2-5 Day Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. How It Works -->
+    <section id="how-it-works" class="py-24 bg-primary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">Simple Process</span>
+                <h2 class="font-heading font-black text-4xl md:text-5xl mt-4">How Spaceset Works</h2>
+                <p class="mt-4 text-lg text-gray-400">From browsing to delivery in four easy steps</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-24 left-0 w-full h-0.5 bg-gray-800 -z-10"></div>
+                
+                <div class="fade-in-up text-center group">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-4 border-primary group-hover:border-accent group-hover:bg-accent rounded-full flex items-center justify-center mb-6 transition-all duration-500 relative z-10">
+                        <span class="font-heading font-black text-2xl group-hover:text-primary">1</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl mb-2">Browse</h3>
+                    <p class="text-gray-400 text-sm">Explore furniture by room or category</p>
+                </div>
+                
+                <div class="fade-in-up text-center group" style="transition-delay: 0.15s;">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-4 border-primary group-hover:border-accent group-hover:bg-accent rounded-full flex items-center justify-center mb-6 transition-all duration-500 relative z-10">
+                        <span class="font-heading font-black text-2xl group-hover:text-primary">2</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl mb-2">Select</h3>
+                    <p class="text-gray-400 text-sm">Pick pieces that match your style</p>
+                </div>
+                
+                <div class="fade-in-up text-center group" style="transition-delay: 0.3s;">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-4 border-primary group-hover:border-accent group-hover:bg-accent rounded-full flex items-center justify-center mb-6 transition-all duration-500 relative z-10">
+                        <span class="font-heading font-black text-2xl group-hover:text-primary">3</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl mb-2">Order</h3>
+                    <p class="text-gray-400 text-sm">Checkout in seconds</p>
+                </div>
+                
+                <div class="fade-in-up text-center group" style="transition-delay: 0.45s;">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-4 border-primary group-hover:border-accent group-hover:bg-accent rounded-full flex items-center justify-center mb-6 transition-all duration-500 relative z-10">
+                        <span class="font-heading font-black text-2xl group-hover:text-primary">4</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl mb-2">Deliver</h3>
+                    <p class="text-gray-400 text-sm">Get it delivered fast</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Visual Showcase -->
+    <section id="showcase" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">Visual Proof</span>
+                <h2 class="font-heading font-black text-4xl md:text-5xl text-primary mt-4">See the Transformation</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="fade-in-up relative group overflow-hidden rounded-3xl shadow-2xl">
+                    <div class="aspect-[4/3] relative">
+                        <img src="https://kimi-web-img.moonshot.cn/img/cdn.prod.website-files.com/195e6fa663efe2d562a064a7d8d3f9716f20a81d.webp" alt="Empty apartment before furnishing" class="w-full h-full object-cover img-zoom">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent overlay-fade"></div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="glass-card rounded-2xl p-4">
+                            <p class="font-heading font-bold text-primary text-lg">From empty…</p>
+                            <p class="text-gray-600 text-sm">Bare apartment with no direction</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up relative group overflow-hidden rounded-3xl shadow-2xl" style="transition-delay: 0.2s;">
+                    <div class="aspect-[4/3] relative">
+                        <img src="https://kimi-web-img.moonshot.cn/img/valyoufurniture.com/cf4e38c0ab716c823ec277578889577f9c9d1c61.jpg" alt="Fully furnished modern living room after" class="w-full h-full object-cover img-zoom">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent overlay-fade"></div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <div class="glass-card rounded-2xl p-4">
+                            <p class="font-heading font-bold text-primary text-lg">…to home.</p>
+                            <p class="text-gray-600 text-sm">Beautifully furnished with Spaceset</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="fade-in-up relative overflow-hidden rounded-2xl aspect-[3/4] group cursor-pointer">
+                    <img src="https://kimi-web-img.moonshot.cn/img/m.media-amazon.com/02155821a7e7158742324a6cb4ce02ed9e4ac0e9.jpg" alt="Living room furniture setup" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white font-heading font-bold text-xl">Living Room</p>
+                        <p class="text-gray-300 text-sm mt-1">Sofas, TV stands, coffee tables</p>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up relative overflow-hidden rounded-2xl aspect-[3/4] group cursor-pointer" style="transition-delay: 0.1s;">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.architecturaldigest.com/68c0eeda45da797517554f35eb023c4452b531c2.jpg" alt="Modern bedroom furniture setup" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white font-heading font-bold text-xl">Bedroom</p>
+                        <p class="text-gray-300 text-sm mt-1">Beds, wardrobes, nightstands</p>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up relative overflow-hidden rounded-2xl aspect-[3/4] group cursor-pointer" style="transition-delay: 0.2s;">
+                    <img src="https://kimi-web-img.moonshot.cn/img/img.dutchcrafters.com/c15293dd89b8297d542c0f7259e698ec90843d0d.jpg" alt="Dining room furniture setup" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-white font-heading font-bold text-xl">Dining</p>
+                        <p class="text-gray-300 text-sm mt-1">Tables, chairs, storage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Value Proposition -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in-up">
+                    <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">Why Choose Spaceset</span>
+                    <h2 class="font-heading font-black text-4xl md:text-5xl text-primary mt-4 mb-8">Why People Choose Us</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-cream rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                                <i class="fas fa-check text-primary group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-primary mb-1">No full design commitment</h3>
+                                <p class="text-gray-600">Buy one piece or ten — you're in control of your space and budget.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-cream rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                                <i class="fas fa-clock text-primary group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-primary mb-1">Shop at your own pace</h3>
+                                <p class="text-gray-600">No pressure, no rush. Build your dream home piece by piece.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-cream rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                                <i class="fas fa-tag text-primary group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-primary mb-1">Affordable options</h3>
+                                <p class="text-gray-600">Quality furniture that doesn't break the bank. Transparent pricing always.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 bg-cream rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                                <i class="fas fa-city text-primary group-hover:text-white transition-colors"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-lg text-primary mb-1">Curated for modern Lagos homes</h3>
+                                <p class="text-gray-600">Styles that match the Lagos aesthetic — contemporary, functional, beautiful.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up relative">
+                    <div class="absolute inset-0 bg-accent/20 rounded-3xl transform rotate-3"></div>
+                    <div class="relative bg-cream rounded-3xl overflow-hidden shadow-xl">
+                        <img src="https://kimi-web-img.moonshot.cn/img/olivseattle.com/49306ddbedf9e16f967af50474fbecb2fd175323.webp" alt="Fully furnished apartment interior" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <div class="grid grid-cols-2 gap-8">
+                                <div class="text-center">
+                                    <p class="font-heading font-black text-4xl text-primary counter" data-target="500">0</p>
+                                    <p class="text-gray-600 mt-2 font-medium">Homes Furnished</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-heading font-black text-4xl text-primary counter" data-target="48">0</p>
+                                    <p class="text-gray-600 mt-2 font-medium">Hour Delivery</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-heading font-black text-4xl text-primary counter" data-target="1000">0</p>
+                                    <p class="text-gray-600 mt-2 font-medium">Furniture Pieces</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="font-heading font-black text-4xl text-primary counter" data-target="15">0</p>
+                                    <p class="text-gray-600 mt-2 font-medium">Lagos Areas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Local Trust Section -->
+    <section class="py-24 bg-primary text-white relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="fade-in-up">
+                <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">Local & Trusted</span>
+                <h2 class="font-heading font-black text-4xl md:text-6xl mt-4 mb-6">Built for Lagos Living</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+                    Whether you're in <span class="text-accent font-semibold">Lekki</span>, <span class="text-accent font-semibold">Yaba</span>, <span class="text-accent font-semibold">Ikeja</span>, or <span class="text-accent font-semibold">Ajah</span> — Spaceset makes furnishing easy.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur rounded-full text-sm font-semibold border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer">Lekki</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur rounded-full text-sm font-semibold border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer">Yaba</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur rounded-full text-sm font-semibold border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer">Ikeja</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur rounded-full text-sm font-semibold border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer">Ajah</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur rounded-full text-sm font-semibold border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer">Ikoyi</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur rounded-full text-sm font-semibold border border-white/20 hover:bg-accent hover:border-accent transition-all cursor-pointer">Victoria Island</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Social Proof -->
+    <section class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-accent font-heading font-semibold text-sm tracking-widest uppercase">Testimonials</span>
+                <h2 class="font-heading font-black text-4xl md:text-5xl text-primary mt-4">What People Say</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="fade-in-up bg-white rounded-3xl p-8 shadow-lg relative">
+                    <div class="text-accent text-4xl absolute top-6 right-8 opacity-20 font-serif">"</div>
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">"I just needed a sofa and dining set — Spaceset saved me stress. The delivery was faster than expected!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <span class="font-heading font-bold text-primary">T</span>
+                        </div>
+                        <div>
+                            <p class="font-heading font-bold text-primary">Tolu</p>
+                            <p class="text-sm text-gray-500">Lekki, Lagos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up bg-white rounded-3xl p-8 shadow-lg relative" style="transition-delay: 0.1s;">
+                    <div class="text-accent text-4xl absolute top-6 right-8 opacity-20 font-serif">"</div>
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">"Finally, a furniture app that understands Lagos. No more going to multiple markets. Everything in one place."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <span class="font-heading font-bold text-primary">A</span>
+                        </div>
+                        <div>
+                            <p class="font-heading font-bold text-primary">Amaka</p>
+                            <p class="text-sm text-gray-500">Yaba, Lagos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up bg-white rounded-3xl p-8 shadow-lg relative" style="transition-delay: 0.2s;">
+                    <div class="text-accent text-4xl absolute top-6 right-8 opacity-20 font-serif">"</div>
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star text-accent text-sm"></i>
+                        <i class="fas fa-star-half-alt text-accent text-sm"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">"Quality furniture at reasonable prices. I've furnished my entire apartment through Spaceset. Highly recommend!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                            <span class="font-heading font-bold text-primary">J</span>
+                        </div>
+                        <div>
+                            <p class="font-heading font-bold text-primary">James</p>
+                            <p class="text-sm text-gray-500">Ikeja, Lagos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Final CTA -->
+    <section class="py-24 bg-gradient-to-br from-primary to-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="fade-in-up">
+                <h2 class="font-heading font-black text-4xl md:text-6xl mb-6">Your Home Starts Here</h2>
+                <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">Download Spaceset and start furnishing smarter. Join hundreds of Lagos homeowners who've transformed their spaces.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-primary px-8 py-4 rounded-2xl font-heading font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-3">
+                        <i class="fab fa-apple text-2xl"></i>
+                        <div class="text-left">
+                            <p class="text-xs font-normal text-gray-500">Download on</p>
+                            <p class="text-sm leading-tight">App Store</p>
+                        </div>
+                    </button>
+                    <button class="bg-white/10 backdrop-blur text-white border-2 border-white/30 px-8 py-4 rounded-2xl font-heading font-bold text-lg hover:bg-white hover:text-primary transition-all transform hover:scale-105 shadow-xl flex items-center justify-center gap-3">
+                        <i class="fab fa-google-play text-2xl"></i>
+                        <div class="text-left">
+                            <p class="text-xs font-normal text-gray-400">Get it on</p>
+                            <p class="text-sm leading-tight">Google Play</p>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="mt-12 flex items-center justify-center gap-8 text-sm text-gray-400">
+                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-accent"></i> Free Download</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-accent"></i> No Hidden Fees</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-check-circle text-accent"></i> Cancel Anytime</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                            <i class="fas fa-couch text-primary text-sm"></i>
+                        </div>
+                        <span class="font-heading font-bold text-lg">Spaceset</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Making home furnishing simple for Lagos residents, one piece at a time.</p>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-accent transition-colors">Browse Furniture</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">How it Works</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Delivery Info</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-accent transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading font-bold mb-4">Connect</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent hover:text-primary transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+                <p> 2026 Spaceset. Built for Lagos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.querySelector('.counter')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += step;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current) + (target > 100 ? '+' : 'h');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target + (target > 100 ? '+' : 'h');
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
