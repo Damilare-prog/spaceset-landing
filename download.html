@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download the Spaceset App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c9a96e;
+            --accent-dark: #b8945a;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --success: #10b981;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+            --radius: 1rem;
+            --radius-lg: 1.5rem;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .logo-icon {
+            width: 36px; height: 36px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-icon i { color: var(--accent); font-size: 0.9rem; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 50%, var(--gray-50) 100%);
+            padding-top: 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: radial-gradient(circle at 1px 1px, var(--primary) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 968px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+        }
+        .hero-text h1 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-text > p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+        @media (max-width: 968px) {
+            .hero-text > p { margin-left: auto; margin-right: auto; }
+        }
+        .store-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 968px) {
+            .store-btns { justify-content: center; }
+        }
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+        }
+        .store-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+            background: var(--gray-800);
+        }
+        .store-btn i { font-size: 1.5rem; }
+        .store-btn small {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+        .store-btn span { font-size: 0.9375rem; }
+        .store-btn.outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .store-btn.outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 968px) {
+            .hero-stats { justify-content: center; }
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-num {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* Phone Mockup */
+        .phone-showcase {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .phone-frame {
+            width: 280px;
+            background: var(--primary);
+            border-radius: 2.5rem;
+            padding: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            position: relative;
+        }
+        @media (min-width: 768px) {
+            .phone-frame { width: 300px; }
+        }
+        .phone-screen {
+            background: var(--white);
+            border-radius: 2rem;
+            overflow: hidden;
+            height: 580px;
+            position: relative;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 120px; height: 24px;
+            background: var(--primary);
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            z-index: 10;
+        }
+        .phone-content {
+            padding-top: 2.5rem;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .phone-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.25rem;
+            padding-top: 1.5rem;
+        }
+        .phone-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .phone-header-top h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .phone-avatar {
+            width: 36px; height: 36px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .phone-avatar i { color: var(--primary); font-size: 0.8rem; }
+        .phone-search {
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            padding: 0.6rem 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+        .phone-categories {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .phone-cat {
+            min-width: 80px;
+            background: var(--cream);
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+            text-align: center;
+        }
+        .phone-cat i {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
+        }
+        .phone-cat span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .phone-products {
+            padding: 0 1rem 1rem;
+        }
+        .phone-products h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        .phone-product {
+            display: flex;
+            gap: 0.75rem;
+            background: var(--gray-50);
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .phone-product-img {
+            width: 60px; height: 60px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .phone-product-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .phone-product-info h5 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .phone-product-info p {
+            font-size: 0.7rem;
+            color: var(--gray-400);
+        }
+        .phone-product-info .price {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 0.25rem;
+        }
+
+        /* Features */
+        .features {
+            padding: 5rem 1.5rem;
+            background: var(--white);
+        }
+        .features-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .features-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .features-header span {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .features-header h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--primary);
+            margin-top: 0.75rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            background: var(--primary);
+            color: var(--white);
+        }
+        .feature-card:hover .feature-icon { background: var(--accent); }
+        .feature-card:hover .feature-icon i { color: var(--white); }
+        .feature-card:hover h3 { color: var(--white); }
+        .feature-card:hover p { color: var(--gray-300); }
+        .feature-icon {
+            width: 64px; height: 64px;
+            background: var(--white);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            transition: all 0.3s;
+        }
+        .feature-icon i {
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        .feature-card p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            transition: color 0.3s;
+        }
+
+        /* Reviews */
+        .reviews {
+            padding: 5rem 1.5rem;
+            background: var(--cream);
+        }
+        .reviews-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .reviews-header h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--primary);
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .review-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+        }
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        .review-stars i {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+        .review-text {
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .review-avatar {
+            width: 40px; height: 40px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .review-avatar span {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+        .review-name {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        .review-location {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: var(--accent);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.05;
+        }
+        .cta-section h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section p {
+            color: var(--gray-400);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary);
+            border-radius: var(--radius);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+        .cta-btn i { font-size: 1.5rem; }
+        .cta-btn.outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .cta-btn.outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 1.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+        .footer-links h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .footer-links a {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            transition: color 0.15s;
+        }
+        .footer-links a:hover { color: var(--accent); }
+        .social-icons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .social-icons a {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-couch"></i></div>
+                Spaceset
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="browse.html">Browse</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#showcase">Gallery</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1>Furniture Shopping,<br><span>Reimagined.</span></h1>
+                <p>Browse, order, and get furniture delivered to your Lagos home — all from your phone.</p>
+                <div class="store-btns">
+                    <button class="store-btn">
+                        <i class="fab fa-apple"></i>
+                        <div style="text-align:left;">
+                            <small>Download on</small>
+                            <span>App Store</span>
+                        </div>
+                    </button>
+                    <button class="store-btn outline">
+                        <i class="fab fa-google-play"></i>
+                        <div style="text-align:left;">
+                            <small>Get it on</small>
+                            <span>Google Play</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-num">4.9</div>
+                        <div class="stat-label">App Rating</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">10K+</div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">2-5</div>
+                        <div class="stat-label">Day Delivery</div>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-showcase">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="phone-content">
+                            <div class="phone-header">
+                                <div class="phone-header-top">
+                                    <div>
+                                        <p style="font-size:0.7rem;color:var(--gray-400);margin-bottom:0.15rem;">Good afternoon</p>
+                                        <h3>Spaceset</h3>
+                                    </div>
+                                    <div class="phone-avatar"><i class="fas fa-user"></i></div>
+                                </div>
+                                <div class="phone-search">
+                                    <i class="fas fa-search" style="font-size:0.8rem;"></i>
+                                    Search furniture...
+                                </div>
+                            </div>
+                            <div class="phone-categories">
+                                <div class="phone-cat">
+                                    <i class="fas fa-couch"></i>
+                                    <span>Sofas</span>
+                                </div>
+                                <div class="phone-cat">
+                                    <i class="fas fa-bed"></i>
+                                    <span>Beds</span>
+                                </div>
+                                <div class="phone-cat">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Dining</span>
+                                </div>
+                                <div class="phone-cat">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Light</span>
+                                </div>
+                            </div>
+                            <div class="phone-products">
+                                <h4>Popular Now</h4>
+                                <div class="phone-product">
+                                    <div class="phone-product-img">
+                                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop" alt="Sofa">
+                                    </div>
+                                    <div class="phone-product-info">
+                                        <h5>Modern Sofa</h5>
+                                        <p>3-seater, Grey</p>
+                                        <div class="price">₦145,000</div>
+                                    </div>
+                                </div>
+                                <div class="phone-product">
+                                    <div class="phone-product-img">
+                                        <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=200&h=200&fit=crop" alt="Dining">
+                                    </div>
+                                    <div class="phone-product-info">
+                                        <h5>Dining Set</h5>
+                                        <p>6 chairs, Oak</p>
+                                        <div class="price">₦280,000</div>
+                                    </div>
+                                </div>
+                                <div class="phone-product">
+                                    <div class="phone-product-img">
+                                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200&h=200&fit=crop" alt="Bed">
+                                    </div>
+                                    <div class="phone-product-info">
+                                        <h5>King Bed</h5>
+                                        <p>Upholstered</p>
+                                        <div class="price">₦195,000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="features-inner">
+            <div class="features-header">
+                <span>Why Use the App</span>
+                <h2>Everything You Need</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <h3>Easy Browsing</h3>
+                    <p>Filter by room, style, price, and size. Find what you need in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Track Delivery</h3>
+                    <p>Real-time tracking from warehouse to your doorstep in Lagos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Save Favorites</h3>
+                    <p>Build wishlists and share with family before you buy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tag"></i></div>
+                    <h3>Exclusive Deals</h3>
+                    <p>App-only discounts and flash sales on premium furniture.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-camera"></i></div>
+                    <h3>AR Preview</h3>
+                    <p>See how furniture looks in your space before ordering.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Support</h3>
+                    <p>Chat with our team anytime for help with orders or delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews">
+        <div class="reviews-inner">
+            <div class="reviews-header">
+                <h2>Loved by Lagos Homeowners</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The app made furnishing my new apartment so easy. Ordered a sofa on Monday, delivered to Lekki by Wednesday."</p>
+                    <div class="review-author">
+                        <div class="review-avatar"><span>T</span></div>
+                        <div>
+                            <div class="review-name">Tolu</div>
+                            <div class="review-location">Lekki, Lagos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"I love the wishlist feature. Saved everything I wanted and bought piece by piece. The app is super smooth."</p>
+                    <div class="review-author">
+                        <div class="review-avatar"><span>A</span></div>
+                        <div>
+                            <div class="review-name">Amaka</div>
+                            <div class="review-location">Yaba, Lagos</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Best furniture app in Lagos. Great prices, fast delivery, and the customer service is excellent."</p>
+                    <div class="review-author">
+                        <div class="review-avatar"><span>J</span></div>
+                        <div>
+                            <div class="review-name">James</div>
+                            <div class="review-location">Ikeja, Lagos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to Furnish?</h2>
+        <p>Download Spaceset now and get 10% off your first order.</p>
+        <div class="cta-btns">
+            <button class="cta-btn">
+                <i class="fab fa-apple"></i>
+                <div style="text-align:left;">
+                    <small style="display:block;font-size:0.7rem;opacity:0.7;">Download on</small>
+                    <span>App Store</span>
+                </div>
+            </button>
+            <button class="cta-btn outline">
+                <i class="fab fa-google-play"></i>
+                <div style="text-align:left;">
+                    <small style="display:block;font-size:0.7rem;opacity:0.7;">Get it on</small>
+                    <span>Google Play</span>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+                    <div style="width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-couch" style="color:var(--primary);font-size:0.8rem;"></i>
+                    </div>
+                    <span style="font-family:var(--font-heading);font-weight:800;font-size:1.1rem;">Spaceset</span>
+                </div>
+                <p>Making home furnishing simple for Lagos residents, one piece at a time.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="browse.html">Browse Furniture</a></li>
+                    <li><a href="index.html#how-it-works">How it Works</a></li>
+                    <li><a href="#">Delivery Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>2026 Spaceset. Built for Lagos.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
