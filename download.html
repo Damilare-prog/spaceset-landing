@@ -663,6 +663,7 @@
             font-size: 0.875rem;
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -679,6 +680,10 @@
                 <li><a href="index.html#how-it-works">How It Works</a></li>
                 <li><a href="index.html#showcase">Gallery</a></li>
             </ul>
+            <a href="cart.html" class="relative" style="color: var(--primary); margin-right: 1rem;">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 w-5 h-5 bg-accent text-primary text-xs font-bold rounded-full flex items-center justify-center hidden" style="background: var(--accent); color: var(--primary);">0</span>
+            </a>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
@@ -925,25 +930,25 @@
             <div class="footer-links">
                 <h4>Product</h4>
                 <ul>
-                    <li><a href="browse.html">Browse Furniture</a></li>
+                    <li><a href="index.html#solution">Browse Furniture</a></li>
                     <li><a href="index.html#how-it-works">How it Works</a></li>
-                    <li><a href="#">Delivery Info</a></li>
+                    <li><a href="index.html#new-homeowners">New Home Essentials</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Company</h4>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="cart.html">My Cart</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Connect</h4>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/spaceset.ng" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/2348012345678" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://twitter.com/spacesetng" target="_blank" rel="noopener noreferrer" title="X"><i class="fab fa-x-twitter"></i></a>
                 </div>
             </div>
         </div>
@@ -952,5 +957,19 @@
         </div>
     </footer>
 
+<script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('spaceset_cart') || '[]');
+            const countEl = document.getElementById('cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            if (totalItems > 0) {
+                countEl.textContent = totalItems;
+                countEl.classList.remove('hidden');
+            } else {
+                countEl.classList.add('hidden');
+            }
+        }
+        updateCartCount();
+    </script>
 </body>
 </html>
